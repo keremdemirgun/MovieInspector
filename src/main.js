@@ -13,7 +13,7 @@ const options = {
   }
 };
 
-// 'async' here so you can use 'await' inside
+// 'async' here so use 'await' inside
 async function searchMovie(movieName) {
   try {
     // 'options' object here so the API knows you are authorized
