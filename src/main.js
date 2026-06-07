@@ -2,8 +2,9 @@ import './style.css'
 
 const searchForm = document.getElementById("search-area-form"); // Grab the form
 const searchInput = document.getElementById("searchInput");
+const searchResultsList = document.getElementById("search-results-list");
 
-const API_Read_Access_Token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwODczOTg4MjgzZDI0NGE0YjQ5ZDc4ZWUyNWFkYjc3NSIsIm5iZiI6MTc4MDY5NDczNy4zODMwMDAxLCJzdWIiOiI2YTIzM2VkMTAyZGVkOTUyNDE4ZTMzN2UiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.xKbnTyWdf3prybT22tBXZeBmugrLqfElBvxWs5up_cA";
+const API_Read_Access_Token = import.meta.env.VITE_TMDB_API_TOKEN;
 
 const options = {
   method: 'GET',
@@ -16,15 +17,35 @@ const options = {
 // 'async' here so use 'await' inside
 async function searchMovie(movieName) {
   try {
+    searchResultsList.innerHTML = "";
     // 'options' object here so the API knows you are authorized
     const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(movieName)}`, options);
     
     // 'await' the .json() parsing
     const data = await response.json(); 
     console.log(data);
+    let searchResults = data.results;
+
+    if(searchResults.length == 0){
+      let li = document.createElement("li");
+      li.textContent = "Film bulunamadı.";
+      searchResultsList.appendChild(li);
+    }
+    
+    else{
+
+      searchResults.forEach(movie => {
+      let li = document.createElement("li");
+      li.textContent = movie.title;
+      searchResultsList.appendChild(li);
+      });
+    }
   } catch (err) {
     console.error("Error fetching movie:", err);
   }
+
+
+  
 }
 
 searchForm.addEventListener("submit", function(event) {
