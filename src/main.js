@@ -13,13 +13,13 @@ const options = {
   }
 };
 
-// Added 'async' here so you can use 'await' inside
+// 'async' here so you can use 'await' inside
 async function searchMovie(movieName) {
   try {
-    // Added the 'options' object here so the API knows you are authorized
+    // 'options' object here so the API knows you are authorized
     const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(movieName)}`, options);
     
-    // You must 'await' the .json() parsing as well
+    // 'await' the .json() parsing
     const data = await response.json(); 
     console.log(data);
   } catch (err) {
@@ -27,8 +27,6 @@ async function searchMovie(movieName) {
   }
 }
 
-// Listen to the form submit event instead of just the button click. 
-// This handles both clicking the button AND pressing 'Enter'.
 searchForm.addEventListener("submit", function(event) {
   event.preventDefault(); // Prevents the page from reloading
   
