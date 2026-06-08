@@ -36,7 +36,11 @@ async function searchMovie(movieName) {
 
       searchResults.forEach(movie => {
       let li = document.createElement("li");
-      li.textContent = movie.title;
+      let img = document.createElement("img");
+      img.setAttribute("src", `https://image.tmdb.org/t/p/w1280/${movie.poster_path}`);
+      li.appendChild(img);
+      li.innerHTML = `<img class="movie-poster" src="https://image.tmdb.org/t/p/w1280/${movie.poster_path}" alt="${movie.title} Poster"></img>
+      <span>${movie.title}</span>`
       searchResultsList.appendChild(li);
       });
     }

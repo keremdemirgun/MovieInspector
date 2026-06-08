@@ -2,3 +2,11 @@ body{
   margin: 0;
   background-color: rgb(22, 22, 22);
 }
+
+.search-results-list{
+  color: white;
+}
+
+.movie-poster{
+  height: 18rem;
+}
