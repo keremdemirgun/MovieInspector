@@ -4,7 +4,7 @@ const searchForm = document.getElementById("search-area-form"); // Grab the form
 const searchInput = document.getElementById("searchInput");
 const searchResultsList = document.getElementById("search-results-list");
 
-const API_Read_Access_Token = import.meta.env.VITE_TMDB_API_TOKEN;
+const API_Read_Access_Token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwODczOTg4MjgzZDI0NGE0YjQ5ZDc4ZWUyNWFkYjc3NSIsIm5iZiI6MTc4MDY5NDczNy4zODMwMDAxLCJzdWIiOiI2YTIzM2VkMTAyZGVkOTUyNDE4ZTMzN2UiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.xKbnTyWdf3prybT22tBXZeBmugrLqfElBvxWs5up_cA";
 
 const options = {
   method: 'GET',

@@ -5,6 +5,17 @@ body{
 
 .search-results-list{
   color: white;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#search-results-list li {
+  display: flex;
+  flex-direction: column; /* Elemanları alt alta dizer */
+  align-items: center;    /* Yatayda ortalar */
+  text-center: center;    /* Yazıyı ortalar */
+  gap: 8px;               /* Resim ve yazı arasındaki boşluk */
 }
 
 .movie-poster{
