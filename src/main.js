@@ -36,9 +36,8 @@ async function searchMovie(movieName) {
     else{
       cleanMovies.forEach(movie => {
       let li = document.createElement("li");
-      li.className = "flex  flex-col items-center text-center gap-2 bg-neutral-800 p-3 rounded-lg shadow-lg w-48";
-      li.innerHTML = `<img class="movie-poster object-cover w-48 h-72 bg-neutral-800 rounded-lg" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title} Poster"></img>
-      <span class="truncate w-full">${movie.title}</span>`
+      li.innerHTML = `<img class="movie-poster" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title} Poster"></img>
+      <span>${movie.title}</span>`
       searchResultsList.appendChild(li);
       });
     }
