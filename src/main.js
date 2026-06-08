@@ -25,22 +25,20 @@ async function searchMovie(movieName) {
     const data = await response.json(); 
     console.log(data);
     let searchResults = data.results;
+    const cleanMovies = searchResults.filter(movie => movie.poster_path !== null);
 
-    if(searchResults.length == 0){
+    if(cleanMovies.length == 0){
       let li = document.createElement("li");
       li.textContent = "Film bulunamadı.";
       searchResultsList.appendChild(li);
     }
     
     else{
-
-      searchResults.forEach(movie => {
+      cleanMovies.forEach(movie => {
       let li = document.createElement("li");
-      let img = document.createElement("img");
-      img.setAttribute("src", `https://image.tmdb.org/t/p/w1280/${movie.poster_path}`);
-      li.appendChild(img);
-      li.innerHTML = `<img class="movie-poster" src="https://image.tmdb.org/t/p/w1280/${movie.poster_path}" alt="${movie.title} Poster"></img>
-      <span>${movie.title}</span>`
+      li.className = "flex  flex-col items-center text-center gap-2 bg-neutral-800 p-3 rounded-lg shadow-lg w-48";
+      li.innerHTML = `<img class="movie-poster object-cover w-48 h-72 bg-neutral-800 rounded-lg" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title} Poster"></img>
+      <span class="truncate w-full">${movie.title}</span>`
       searchResultsList.appendChild(li);
       });
     }
@@ -48,9 +46,8 @@ async function searchMovie(movieName) {
     console.error("Error fetching movie:", err);
   }
 
-
-  
 }
+
 
 searchForm.addEventListener("submit", function(event) {
   event.preventDefault(); // Prevents the page from reloading
